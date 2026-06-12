@@ -8,7 +8,7 @@
 
 | Task | Status | Review rounds | Commit | Notes |
 |---|---|---|---|---|
-| T01 | review | 1 | - | Review round 1 rejected: F5 as unknown as not enforced; F10 console-only catch not enforced in kernel override |
+| T01 | done | 1 | 955964d | Released with reviewer approval; no debt |
 | T02 | pending | - | - | |
 | T03 | pending | - | - | |
 | T04 | pending | - | - | Q1 settled in spec §7 |
