@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "exactOptionalPropertyTypes": true,
+    "isolatedModules": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
+    "target": "ES2022",
+    "types": ["node", "vitest"],
+    "verbatimModuleSyntax": true
+  },
+  "exclude": ["packages/kernel/src/__violation__.ts"],
+  "include": ["tests/**/*.ts", "vitest.config.ts", "vitest.setup.ts"]
+}

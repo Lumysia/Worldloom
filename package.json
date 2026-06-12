@@ -1,0 +1,27 @@
+{
+  "name": "worldloom",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "depcruise": "depcruise \"packages/**/src/**/*.ts\" --exclude \"__violation__[.]ts$\"",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^22.10.10",
+    "dependency-cruiser": "^17.4.3",
+    "eslint": "^9.39.1",
+    "eslint-plugin-i18next": "^6.1.4",
+    "fast-check": "^4.3.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.6.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "undici": "^7.16.0",
+    "vitest": "^4.0.14"
+  }
+}
