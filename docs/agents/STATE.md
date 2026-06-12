@@ -8,28 +8,28 @@
 
 | Task | Status | Review rounds | Commit | Notes |
 |---|---|---|---|---|
-| T01 | in_progress | 0 | - | Project name: worldloom; package scopes use @worldloom/* |
+| T01 | review | 1 | - | Review round 1 rejected: F5 as unknown as not enforced; F10 console-only catch not enforced in kernel override |
 | T02 | pending | - | - | |
 | T03 | pending | - | - | |
-| T04 | pending | - | - | Needs Q1 ruling before start |
-| T05 | pending | - | - | Needs Q2 ruling before start |
-| T06 | pending | - | - | Needs Q3 ruling before start |
+| T04 | pending | - | - | Q1 settled in spec §7 |
+| T05 | pending | - | - | Q2 settled in spec §7 |
+| T06 | pending | - | - | Q3 settled in spec §7 |
 | T07 | pending | - | - | |
 | T08 | pending | - | - | |
 | T09 | pending | - | - | |
 | T10 | pending | - | - | |
-| T11 | pending | - | - | M0 final acceptance; needs Q4 ruling |
+| T11 | pending | - | - | M0 final acceptance; Q4 settled in spec §7 |
 
 Status values: pending / in_progress / review / done / blocked
 
 ## Decisions (human rulings)
 
-<!-- Format:
-Q1 [2026-06-12] Relations use a separate adjacency table (SoA twin arrays +
-sorted index), not component-pair simulation.
--->
+<!-- Format: Qn [date] one-line ruling -->
 
-(none yet)
+Q1 [2026-06-12] Relations use a dedicated RelationStore inside the World Store, not bitECS component-pair simulation.
+Q2 [2026-06-12] CEL exposes exactly get, has, related, hasRelation, distance, actor, param, tick; all access is ObservationScope-bounded and fail-closed.
+Q3 [2026-06-12] infoWall keys use <packageId>.<domain>.<name>, lowercase kebab-case dot-separated segments; kernel. is reserved.
+Q4 [2026-06-12] Locale resources use locales/<bcp47>/<domain>.json; loader merges domains and key collisions are validation errors.
 
 ## Blocked
 

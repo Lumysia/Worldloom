@@ -47,8 +47,7 @@ F*/D*/R* violations.
 - File scope: `packages/kernel/src/projection/**` + tests.
 - DoD: apply + serialization round-trip test per Effect op; serialization
   idempotence (serialize(deserialize(x)) === x).
-- Depends on: T02. ⚠ Touches Q1 (relation layout) — confirm a ruling exists in
-  STATE.md before starting.
+- Depends on: T02. Q1 ruling applies (spec §7): dedicated RelationStore.
 
 ### T05 Intent Pipeline (action channel)
 - Goal: `PIPELINE_STAGES`-driven pipeline; AuthGate / SchemaGate / PolicyGate /
@@ -56,14 +55,14 @@ F*/D*/R* violations.
 - File scope: `packages/kernel/src/pipeline/**`,
   `packages/kernel/src/rules/**`, tests.
 - DoD: T-PIPE-01, T-PIPE-02, T-PIPE-03, T-RULE-01.
-- Depends on: T03, T04. ⚠ Touches Q2 (CEL whitelist).
+- Depends on: T03, T04. Q2 ruling applies (spec §7): the eight-function CEL whitelist, fail-closed.
 
 ### T06 ObservationScope & WorldView
 - Goal: spec §4.6; the three spatial kinds (radius/region/all); infoWall
   field-level filtering (locked fields absent from WorldView, not null).
 - File scope: `packages/kernel/src/observe/**`, tests.
 - DoD: T-OBS-01, T-OBS-02, T-OBS-03.
-- Depends on: T04, T05. ⚠ Touches Q3 (infoWall namespace).
+- Depends on: T04, T05. Q3 ruling applies (spec §7): <packageId>.<domain>.<name> keys.
 
 ### T07 Clock / Scheduler / step()
 - Goal: tick advancement; same-tick Intent ordering (D3); PRNG injection (D1);
@@ -107,7 +106,7 @@ F*/D*/R* violations.
 - DoD: M0 acceptance test `T-M0-01`: load package → replay seed → run 1000
   ticks → deterministic hash equality; each of the 5 actions has one success
   and one rejection case. Plus `T-I18N-01` (fallback chain + ICU plural
-  rendering across the two locales). ⚠ Touches Q4 (locale file layout).
+  rendering across the two locales). Q4 ruling applies (spec §7): locales/<bcp47>/<domain>.json.
 - Depends on: T10.
 
 ---

@@ -11,25 +11,23 @@
 | T01 | pending | - | - | |
 | T02 | pending | - | - | |
 | T03 | pending | - | - | |
-| T04 | pending | - | - | Needs Q1 ruling before start |
-| T05 | pending | - | - | Needs Q2 ruling before start |
-| T06 | pending | - | - | Needs Q3 ruling before start |
+| T04 | pending | - | - | Q1 settled in spec §7 |
+| T05 | pending | - | - | Q2 settled in spec §7 |
+| T06 | pending | - | - | Q3 settled in spec §7 |
 | T07 | pending | - | - | |
 | T08 | pending | - | - | |
 | T09 | pending | - | - | |
 | T10 | pending | - | - | |
-| T11 | pending | - | - | M0 final acceptance; needs Q4 ruling |
+| T11 | pending | - | - | M0 final acceptance; Q4 settled in spec §7 |
 
 Status values: pending / in_progress / review / done / blocked
 
 ## Decisions (human rulings)
 
-<!-- Format:
-Q1 [2026-06-12] Relations use a separate adjacency table (SoA twin arrays +
-sorted index), not component-pair simulation.
--->
+<!-- Format: Qn [date] one-line ruling -->
 
-(none yet)
+Q1-Q4: pre-settled in spec.md §7 (RelationStore / CEL whitelist /
+infoWall namespace / locale file layout). No further ruling needed.
 
 ## Blocked
 

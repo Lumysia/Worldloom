@@ -324,17 +324,47 @@ T-GATE-01  A deliberate K1 violation fixture is rejected by depcruise
 makes the utterance channel end-to-end testable with zero LLMs (the companion
 to F6).
 
-## 7. Open Questions (touching one = stop and ask, citing the number)
+## 7. Open Questions & Settled Rulings
+
+### Settled rulings (pre-decided; treat as Decision Log entries — do not re-litigate)
 
 ```text
-Q1  Relation storage layout in bitECS (component-pair simulation vs. a separate
-    adjacency table) → must be decided before T04
-Q2  The whitelist of world functions exposed to the CEL environment → before T05
-Q3  Namespace convention for infoWall keys → before T06
-Q4  Locale resource file layout inside packages (one file per locale vs. one
-    file per domain per locale) → before T11
+Q1  SETTLED — Relations use a dedicated RelationStore inside the World Store,
+    NOT bitECS component-pair simulation. Edges are bucketed by relation type,
+    kept in (from, to) ULID-lexicographic sorted order with by-from and by-to
+    indexes, and serialized canonically with snapshots. Rationale: relations
+    are first-class (cardinality + edge data schema); many-to-many edges with
+    data fit poorly in per-entity components; explicit sorted iteration is
+    required by D4.
+
+Q2  SETTLED — The CEL environment exposes exactly eight read-only functions:
+    get(entity, component), has(entity, component), related(from, relation)
+    (returns a sorted id list), hasRelation(from, relation, to),
+    distance(a, b) (integer cell distance), actor(), param(name), tick().
+    All access is bounded by the acting entity's ObservationScope. Accessing a
+    missing component or out-of-scope entity = evaluation failure = the
+    precondition fails CLOSED. No randomness, no writes, no loops.
+
+Q3  SETTLED — infoWall keys follow <packageId>.<domain>.<name>; lowercase
+    kebab-case segments, dot-separated, must start with the package id
+    (e.g. demo-village.plot.murderer-identity). The kernel. prefix is
+    reserved. Wildcards (demo-village.plot.*) are allowed only in grants
+    (unlocks), never in component annotations.
+
+Q4  SETTLED — Locale resources use one directory per locale, one file per
+    domain: locales/<bcp47>/<domain>.json (e.g. locales/en/entities.json).
+    The loader merges domain files into a single namespace at load time;
+    a key collision is a package validation error. Rationale: Builder edits
+    are domain-local (small diffs, fewer conflicts under PR governance);
+    key-parity checks run per file pair.
 ```
 
-After a human ruling, the answer is recorded in the Decisions section of
-`docs/agents/STATE.md`. An implementer discovering a new ambiguity reports a
-new Q item — never decides alone.
+### Open questions
+
+```text
+(none currently)
+```
+
+The mechanism stands: an implementer discovering a NEW ambiguity reports a new
+Q item and stops — never decides alone. After a human ruling, the answer is
+recorded in the Decisions section of `docs/agents/STATE.md`.
