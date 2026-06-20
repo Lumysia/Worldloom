@@ -21,7 +21,7 @@
     "turbo": "^2.6.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.0",
-    "undici": "^7.16.0",
+    "undici": "^7.28.0",
     "vitest": "^4.0.14"
   }
 }
